@@ -16,8 +16,8 @@ module HexletCode
     def input(tag_name, options = {})
       value = @model.public_send(tag_name)
       as = options.fetch(:as, nil)
+      label_value = tag_name.capitalize.to_s
       @tags << if as.nil?
-                 label_value = tag_name.capitalize.to_s
                  input_attributes = { name: tag_name, type: "text", value: }
                  input_attributes[:class] = options[:class] unless options[:class].nil?
 
@@ -28,6 +28,8 @@ module HexletCode
                  cols = options.fetch(:cols, 20)
                  attributes = { name: tag_name, cols:, rows: }
                  attributes[:class] = options[:class] unless options[:class].nil?
+
+                 Tag.build("label", for: tag_name) { label_value } +
                  Tag.build("textarea", attributes) { value }
                end
     end

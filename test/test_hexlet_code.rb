@@ -85,6 +85,7 @@ describe "generate form with input".yellow do
     end
     expect = <<~TEXT
       <form action="#" method="post">
+        <label for="job">Job</label>
         <textarea name="job" cols="50" rows="50">hexlet</textarea>
       </form>
     TEXT
