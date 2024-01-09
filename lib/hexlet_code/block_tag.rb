@@ -18,25 +18,25 @@ module HexletCode
       as = options.fetch(:as, nil)
       label_value = tag_name.capitalize.to_s
       @tags << if as.nil?
-                 input_attributes = { name: tag_name, type: "text", value: }
+                 input_attributes = { name: tag_name, type: 'text', value: }
                  input_attributes[:class] = options[:class] unless options[:class].nil?
 
-                 Tag.build("label", for: tag_name) { label_value } +
-                 Tag.build("input", input_attributes)
+                 Tag.build('label', for: tag_name) { label_value } +
+                 Tag.build('input', input_attributes)
                elsif as == :text
                  rows = options.fetch(:rows, 40)
                  cols = options.fetch(:cols, 20)
                  attributes = { name: tag_name, cols:, rows: }
                  attributes[:class] = options[:class] unless options[:class].nil?
 
-                 Tag.build("label", for: tag_name) { label_value } +
-                 Tag.build("textarea", attributes) { value }
+                 Tag.build('label', for: tag_name) { label_value } +
+                 Tag.build('textarea', attributes) { value }
                end
     end
 
-    def submit(value = "Save")
-      attributes = { type: "submit", value: }
-      @tags << Tag.build("input", attributes)
+    def submit(value = 'Save')
+      attributes = { type: 'submit', value: }
+      @tags << Tag.build('input', attributes)
     end
   end
 end

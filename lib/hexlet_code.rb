@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require_relative "hexlet_code/version"
+require_relative 'hexlet_code/version'
 
 # описание модуля
 module HexletCode
@@ -13,12 +13,12 @@ module HexletCode
     def form_for(user, options = {}, &block)
       inner_tags = get_inner_tags(user, &block)
 
-      action = options.fetch(:url, "#")
-      method = options.fetch(:method, "post")
+      action = options.fetch(:url, '#')
+      method = options.fetch(:method, 'post')
       klass =  options.fetch(:class, nil)
       args = { action:, method: }
       args[:class] = klass unless klass.nil?
-      Tag.build("form", args) { inner_tags }
+      Tag.build('form', args) { inner_tags }
     end
 
     def get_inner_tags(user, &block)
@@ -26,7 +26,7 @@ module HexletCode
 
       instance = BlockTag.new(user)
       block.call(instance)
-      instance.tags.reduce("") do |acc, str|
+      instance.tags.reduce('') do |acc, str|
         acc += str
         acc
       end

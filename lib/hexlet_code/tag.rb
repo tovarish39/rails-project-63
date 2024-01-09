@@ -18,9 +18,9 @@ module HexletCode
     end
 
     def self.format_attributes(attributes)
-      return "" if attributes.empty?
+      return '' if attributes.empty?
 
-      attributes.reduce("") do |acc, (k, v)|
+      attributes.reduce('') do |acc, (k, v)|
         acc = "#{acc} #{k}=\"#{v}\""
         acc
       end

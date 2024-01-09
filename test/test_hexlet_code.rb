@@ -2,39 +2,39 @@
 
 # require 'test_helper'
 # для дебаггера
-require_relative "test_helper"
-require "colorize"
+require_relative 'test_helper'
+require 'colorize'
 
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 # rubocop:disable Style/BlockLength
 
-describe "generate empty form".yellow do
+describe 'generate empty form'.yellow do
   before do
-    @user = User.new(name: "Vasia")
+    @user = User.new(name: 'Vasia')
   end
 
-  it "without url".red do
+  it 'without url'.red do
     form = HexletCode.form_for @user do |f|
     end
     assert form == '<form action="#" method="post"></form>'
   end
 
-  it "with url".red do
-    form = HexletCode.form_for @user, url: "/users" do |f|
+  it 'with url'.red do
+    form = HexletCode.form_for @user, url: '/users' do |f|
     end
     assert form == '<form action="/users" method="post"></form>'
   end
 end
 
 def normalize_whitespaces(text)
-  text.gsub("\n", "").gsub("  ", "")
+  text.gsub("\n", '').gsub('  ', '')
 end
 
-describe "generate form with input".yellow do
+describe 'generate form with input'.yellow do
   before do
-    @user = User.new name: "rob", job: "hexlet", gender: "m"
+    @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
   end
-  it "simple inputs".red do
+  it 'simple inputs'.red do
     form = HexletCode.form_for @user do |f|
       f.input :name
       f.input :job
@@ -50,7 +50,7 @@ describe "generate form with input".yellow do
     assert form == normalize_whitespaces(expect)
   end
 
-  it "with empty value".red do
+  it 'with empty value'.red do
     form = HexletCode.form_for User.new do |f|
       f.input :name
     end
@@ -63,7 +63,7 @@ describe "generate form with input".yellow do
     assert form == normalize_whitespaces(expect)
   end
 
-  it "input with :as".red do
+  it 'input with :as'.red do
     form = HexletCode.form_for @user do |f|
       f.input :name
       f.input :job, as: :text
@@ -79,8 +79,8 @@ describe "generate form with input".yellow do
     assert form == normalize_whitespaces(expect)
   end
 
-  it "input with :as && options".red do
-    form = HexletCode.form_for @user, url: "#" do |f|
+  it 'input with :as && options'.red do
+    form = HexletCode.form_for @user, url: '#' do |f|
       f.input :job, as: :text, rows: 50, cols: 50
     end
     expect = <<~TEXT
@@ -92,9 +92,9 @@ describe "generate form with input".yellow do
     assert form == normalize_whitespaces(expect)
   end
 
-  it "input with :class".red do
-    form = HexletCode.form_for @user, url: "#" do |f|
-      f.input :name, class: "user-input"
+  it 'input with :class'.red do
+    form = HexletCode.form_for @user, url: '#' do |f|
+      f.input :name, class: 'user-input'
       f.input :job
     end
     expect = <<~TEXT
@@ -107,15 +107,15 @@ describe "generate form with input".yellow do
     TEXT
     assert form == normalize_whitespaces(expect)
   end
-  it "input with unexist field => raice".red do
+  it 'input with unexist field => raice'.red do
     assert_raises do
-      HexletCode.form_for @user, url: "#" do |f|
+      HexletCode.form_for @user, url: '#' do |f|
         f.input :unexist_field
       end
     end
   end
-  it "inputs with default submit".red do
-    form = HexletCode.form_for @user, url: "#", &:submit
+  it 'inputs with default submit'.red do
+    form = HexletCode.form_for @user, url: '#', &:submit
     expect = <<~TEXT
       <form action="#" method="post">
         <input type="submit" value="Save">
@@ -123,9 +123,9 @@ describe "generate form with input".yellow do
     TEXT
     assert form == normalize_whitespaces(expect)
   end
-  it "inputs with submit with value".red do
-    form = HexletCode.form_for @user, url: "#" do |f|
-      f.submit "Wow"
+  it 'inputs with submit with value'.red do
+    form = HexletCode.form_for @user, url: '#' do |f|
+      f.submit 'Wow'
     end
     expect = <<~TEXT
       <form action="#" method="post">
