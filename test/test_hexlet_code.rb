@@ -72,6 +72,7 @@ describe "generate form with input".yellow do
       <form action="#" method="post">
         <label for="name">Name</label>
         <input name="name" type="text" value="rob">
+        <label for="job">Job</label>
         <textarea name="job" cols="20" rows="40">hexlet</textarea>
       </form>
     TEXT
