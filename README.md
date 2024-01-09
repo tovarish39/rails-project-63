@@ -1,3 +1,5 @@
+![example workflow](https://github.com/tovarish39/rails-project-63/actions/workflows/ruby.yml/badge.svg)
+
 # HexletCode
 
 TODO: Delete this and the text below, and describe your gem
