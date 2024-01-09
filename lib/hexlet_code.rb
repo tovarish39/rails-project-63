@@ -15,7 +15,10 @@ module HexletCode
 
       action = options.fetch(:url, "#")
       method = options.fetch(:method, "post")
-      Tag.build("form", action:, method:) { inner_tags }
+      klass =  options.fetch(:class, nil)
+      args = { action:, method: }
+      args[:class] = klass unless klass.nil?
+      Tag.build("form", args) { inner_tags }
     end
 
     def get_inner_tags(user, &block)
