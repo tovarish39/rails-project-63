@@ -14,7 +14,8 @@ module HexletCode
       inner_tags = get_inner_tags(user, &block)
 
       action = options.fetch(:url, "#")
-      Tag.build("form", action:, method: "post") { inner_tags }
+      method = options.fetch(:method, "post")
+      Tag.build("form", action:, method:) { inner_tags }
     end
 
     def get_inner_tags(user, &block)
