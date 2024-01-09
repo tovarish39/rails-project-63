@@ -1,4 +1,5 @@
 ![example workflow](https://github.com/tovarish39/rails-project-63/actions/workflows/ruby.yml/badge.svg)
+![example workflow](https://github.com/tovarish39/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)
 
 # HexletCode
 
