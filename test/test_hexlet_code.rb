@@ -8,23 +8,23 @@ require 'colorize'
 User = Struct.new(:name, :job, :gender, keyword_init: true)
 # rubocop:disable Style/BlockLength
 
-# describe 'generate empty form'.yellow do
-#   before do
-#     @user = User.new(name: 'Vasia')
-#   end
+describe 'generate empty form'.yellow do
+  before do
+    @user = User.new(name: 'Vasia')
+  end
 
-#   it 'without url'.red do
-#     form = HexletCode.form_for @user do |f|
-#     end
-#     assert form == '<form action="#" method="post"></form>'
-#   end
+  it 'without url'.red do
+    form = HexletCode.form_for @user do |f|
+    end
+    assert form == '<form action="#" method="post"></form>'
+  end
 
-#   it 'with url'.red do
-#     form = HexletCode.form_for @user, url: '/users' do |f|
-#     end
-#     assert form == '<form action="/users" method="post"></form>'
-#   end
-# end
+  it 'with url'.red do
+    form = HexletCode.form_for @user, url: '/users' do |f|
+    end
+    assert form == '<form action="/users" method="post"></form>'
+  end
+end
 
 def normalize_whitespaces(text)
   text.gsub("\n", '').gsub('  ', '')
