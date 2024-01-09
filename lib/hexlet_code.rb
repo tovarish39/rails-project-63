@@ -9,6 +9,9 @@ module HexletCode
   autoload :Tag, "#{__dir__}/hexlet_code/tag.rb"
   autoload :BlockTag, "#{__dir__}/hexlet_code/block_tag.rb"
 
+  # изначально делал нижний вариант, закомменченый с синтаксисом &block вместо yield
+  # yield вариант я так понял предпочтения rubocop более поздней версии на которой hexlet-check проверяет
+  # у меня изначально rubocop просил переделывать в &block вместо yield
   class << self
     def form_for(user, options = {})
       # inner_tags = get_inner_tags(user, &block) # { yield }
@@ -31,16 +34,6 @@ module HexletCode
       args[:class] = klass unless klass.nil?
       Tag.build('form', args) { inner_tags }
     end
-    # def get_inner_tags(user)
-    #   return nil unless block_given?
-
-    #   instance = BlockTag.new(user)
-    #   yield instance if block_given?
-    #   instance.tags.reduce('') do |acc, str|
-    #     acc += str
-    #     acc
-    #   end
-    # end
   end
 
   # class << self
@@ -64,6 +57,17 @@ module HexletCode
   #       acc += str
   #       acc
   #     end
+  #   end
+  # end
+
+  # def get_inner_tags(user)
+  #   return nil unless block_given?
+
+  #   instance = BlockTag.new(user)
+  #   yield instance if block_given?
+  #   instance.tags.reduce('') do |acc, str|
+  #     acc += str
+  #     acc
   #   end
   # end
 end
