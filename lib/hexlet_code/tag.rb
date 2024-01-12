@@ -14,7 +14,7 @@ module HexletCode
     end
 
     def self.part_label(options)
-      "<label#{format_attributes({ for: options[:for] })}>#{options[:inner]}"
+      "<label#{format_attributes(options.except(:inner))}>#{options[:inner]}"
     end
 
     def self.part_form(options)
@@ -26,9 +26,7 @@ module HexletCode
     end
 
     def self.part_textarea(options)
-      inner = options[:inner]
-      options = options.reject { |key, _value| key == :inner }
-      "<textarea#{format_attributes(options)}>#{inner}"
+      "<textarea#{format_attributes(options.except(:inner))}>#{options[:inner]}"
     end
 
     def self.format_attributes(attributes)
