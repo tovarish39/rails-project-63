@@ -6,15 +6,29 @@ module HexletCode
     PAIR_TAGS = %i[label div form label textarea].freeze
     SINGLE_TAGS = %i[br img input].freeze
 
-    def self.build(*args, &block)
-      # def self.build(tag_name, attributes = {})
-      tag_name, attributes = args
-      attributes ||= {}
-
-      result  = "<#{tag_name}#{format_attributes(attributes)}>"
-      result << block.call if !block.nil? && !block.call.nil?
+    def self.build(tag_name, options = {})
+      result  = send("part_#{tag_name}", options)
+      result << yield if block_given?
       result << "</#{tag_name}>" if PAIR_TAGS.include?(tag_name.to_sym)
       result
+    end
+
+    def self.part_label(options)
+      "<label#{format_attributes({ for: options[:for] })}>#{options[:inner]}"
+    end
+
+    def self.part_form(options)
+      "<form#{format_attributes(options)}>"
+    end
+
+    def self.part_input(options)
+      "<input#{format_attributes(options)}>"
+    end
+
+    def self.part_textarea(options)
+      inner = options[:inner]
+      options = options.reject { |key, _value| key == :inner }
+      "<textarea#{format_attributes(options)}>#{inner}"
     end
 
     def self.format_attributes(attributes)

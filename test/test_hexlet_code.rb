@@ -6,31 +6,12 @@ require_relative 'test_helper'
 require 'colorize'
 
 User = Struct.new(:name, :job, :gender, keyword_init: true)
-# rubocop:disable Style/BlockLength
-
-# describe 'generate empty form'.yellow do
-#   before do
-#     @user = User.new(name: 'Vasia')
-#   end
-
-#   it 'without url'.red do
-#     form = HexletCode.form_for @user do |f|
-#     end
-#     assert form == '<form action="#" method="post"></form>'
-#   end
-
-#   it 'with url'.red do
-#     form = HexletCode.form_for @user, url: '/users' do |f|
-#     end
-#     assert form == '<form action="/users" method="post"></form>'
-#   end
-# end
 
 def normalize_whitespaces(text)
   text.gsub("\n", '').gsub('  ', '')
 end
 
-describe 'generate form with input'.yellow do
+describe 'generate form with input'.yellow do # rubocop:disable Metrics/BlockLength
   before do
     @user = User.new name: 'rob', job: 'hexlet', gender: 'm'
   end
@@ -135,5 +116,3 @@ describe 'generate form with input'.yellow do
     assert form == normalize_whitespaces(expect)
   end
 end
-
-# rubocop:enable Style/BlockLength
