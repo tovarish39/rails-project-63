@@ -17,7 +17,7 @@ module HexletCode
       Tag.build(obj.form[:tag_name], obj.form[:options]) do
         obj.fields.map do |field|
           Tag.build(field[:tag_name], field[:options])
-        end.join('')
+        end.join
       end
     end
   end
