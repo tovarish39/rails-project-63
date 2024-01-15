@@ -88,6 +88,7 @@ describe 'generate form with input'.yellow do # rubocop:disable Metrics/BlockLen
     TEXT
     assert form == normalize_whitespaces(expect)
   end
+
   it 'input with unexist field => raice'.red do
     assert_raises do
       HexletCode.form_for @user, url: '#' do |f|
@@ -95,6 +96,7 @@ describe 'generate form with input'.yellow do # rubocop:disable Metrics/BlockLen
       end
     end
   end
+
   it 'inputs with default submit'.red do
     form = HexletCode.form_for @user, url: '#', &:submit
     expect = <<~TEXT
@@ -104,6 +106,7 @@ describe 'generate form with input'.yellow do # rubocop:disable Metrics/BlockLen
     TEXT
     assert form == normalize_whitespaces(expect)
   end
+
   it 'inputs with submit with value'.red do
     form = HexletCode.form_for @user, url: '#' do |f|
       f.submit 'Wow'
