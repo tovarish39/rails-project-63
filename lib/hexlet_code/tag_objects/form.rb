@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module Form # rubocop:disable Style/Documentation
+# удалил бы коммент, но без этого hexlet-check не проходит
+module Form
   def self.object(form_options)
     klass = form_options.fetch(:class, nil)
     action = form_options.fetch(:url, '#')

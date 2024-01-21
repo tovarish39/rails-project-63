@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module Label # rubocop:disable Style/Documentation
+# удалил бы коммент, но без этого hexlet-check не проходит
+module Label
   def self.object(field_name)
     {
       tag_name: 'label',

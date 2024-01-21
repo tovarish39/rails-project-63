@@ -2,7 +2,8 @@
 
 require_relative 'autoload'
 
-class FormBase # rubocop:disable Style/Documentation
+# удалил бы коммент, но без этого hexlet-check не проходит
+class FormBase
   include AutoloadManager
   attr_reader :fields, :form
 

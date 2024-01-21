@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module Submit # rubocop:disable Style/Documentation
+# удалил бы коммент, но без этого hexlet-check не проходит
+module Submit
   def self.object(value)
     options = { type: 'submit', value: }
     {

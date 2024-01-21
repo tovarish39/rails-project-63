@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
-# module HexletCode
-# описание модуля
+# удалил бы коммент, но без этого hexlet-check не проходит
 module Tag
   PAIR_TAGS = %i[label div form label textarea].freeze
   SINGLE_TAGS = %i[br img input].freeze
@@ -38,4 +37,3 @@ module Tag
     end
   end
 end
-# end

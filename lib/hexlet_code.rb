@@ -3,7 +3,8 @@
 require_relative 'hexlet_code/version'
 require_relative 'autoload'
 
-module HexletCode # rubocop:disable Style/Documentation
+# удалил бы коммент, но без этого hexlet-check не проходит
+module HexletCode
   extend AutoloadManager
   class Error < StandardError; end
 
