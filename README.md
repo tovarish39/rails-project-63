@@ -1,22 +1,38 @@
 ![example workflow](https://github.com/tovarish39/rails-project-63/actions/workflows/ruby.yml/badge.svg)
 ![example workflow](https://github.com/tovarish39/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)
 
-# Description module HexletCode
+# Educational project - HexletCode
 
-занимается обработкой методов
-пример
-f.input :name
+## Description
 
-# Description class Form
+    using this code you can simply create html forms based on the passed model
 
-поля инстанса:
-@form, @fields, @model
+## Usage
 
-поля @form и @fields заполняются в одинаковом формате -> {tag_name:, options:} для однотипного рендеринга разных тегов
+when project was downloaded
 
-поле @model
--> модель-аттрибут метода form_for #{model}
+    require "/path/to/project_name/lib/hexlet_code.rb"
 
-# Description module Tag
+after that you
 
-занимается только рендерингом тегов
+create 'model', when it can respond to it field
+example with Struct lib
+
+    User = Struct.new(:name, :age, :description, keyword_init:true)
+    user = User.new(name:'Vasiliy')
+
+    HexletCode.form_for user do |f|
+    f.input :name
+    f.input :description, as: :text
+    f.submit
+    end
+
+=> result is html in string format
+
+    <form action="#" method="post">
+        <label for="name">Name</label>
+        <input name="name" type="text" value="Vasiliy">
+        <label for="description">Description</label>
+        <textarea name="description" cols="20" rows="40"></textarea>
+        <input type="submit" value="Save">
+    </form>

@@ -2,6 +2,6 @@
 
 # удалил бы коммент, но без этого hexlet-check не проходит
 module AutoloadManager
-  autoload :Tag, "#{__dir__}/hexlet_code/tag.rb"
-  autoload :FormBase, "#{__dir__}/hexlet_code/form_base.rb"
+  autoload :HtmlRenderer, "#{__dir__}/hexlet_code/html_render.rb"
+  autoload :FormFull, "#{__dir__}/hexlet_code/form_full.rb"
 end

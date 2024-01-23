@@ -10,14 +10,10 @@ module HexletCode
 
   class << self
     def form_for(model, form_options = {})
-      obj = FormBase.new(model, form_options)
-      yield obj if block_given?
+      form_full = FormFull.new(model, form_options)
+      yield form_full if block_given?
 
-      Tag.build(obj.form[:tag_name], obj.form[:options]) do
-        obj.fields.map do |field|
-          Tag.build(field[:tag_name], field[:options])
-        end.join
-      end
+      HtmlRenderer.render(form_full)
     end
   end
 end
