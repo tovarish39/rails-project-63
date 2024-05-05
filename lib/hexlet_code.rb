@@ -13,6 +13,14 @@ module HexletCode
       form_full = FormFull.new(model, form_options)
       yield form_full if block_given?
 
+
+
+
+
+
+
+
+      
       HtmlRenderer.render(form_full)
     end
   end
